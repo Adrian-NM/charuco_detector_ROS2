@@ -11,7 +11,7 @@ charuco_detector:
       minCornerDistanceRate: 0.05
       minDistanceToBorder: 3
       minMarkerDistanceRate: 0.05
-      cornerRefinementMethod: 0
+      cornerRefinementMethod: 1
       cornerRefinementWinSize: 5
       cornerRefinementMaxIterations: 30
       cornerRefinementMinAccuracy: 0.1

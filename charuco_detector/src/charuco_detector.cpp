@@ -31,7 +31,7 @@ ChArUcoDetector::ChArUcoDetector()
 	declare_parameter("charuco_parameters.minCornerDistanceRate", 0.05);
 	declare_parameter("charuco_parameters.minDistanceToBorder", 3);
 	declare_parameter("charuco_parameters.minMarkerDistanceRate", 0.05);
-	//private_node_handle_->param("charuco/cornerRefinementMethod", detector_parameters_->cornerRefinementMethod, 0);
+	declare_parameter("charuco_parameters.cornerRefinementMethod", 0);
 	declare_parameter("charuco_parameters.cornerRefinementWinSize", 5);
 	declare_parameter("charuco_parameters.cornerRefinementMaxIterations", 30);
 	declare_parameter("charuco_parameters.cornerRefinementMinAccuracy", 0.1);
@@ -99,7 +99,7 @@ void ChArUcoDetector::setupConfigurationFromParameterServer() {
 	get_parameter("charuco_parameters.minCornerDistanceRate", detector_parameters_->minCornerDistanceRate);
 	get_parameter("charuco_parameters.minDistanceToBorder", detector_parameters_->minDistanceToBorder);
 	get_parameter("charuco_parameters.minMarkerDistanceRate", detector_parameters_->minMarkerDistanceRate);
-	//private_node_handle_->param("charuco/cornerRefinementMethod", detector_parameters_->cornerRefinementMethod, 0);
+	get_parameter("charuco_parameters.cornerRefinementMethod", detector_parameters_->cornerRefinementMethod);
 	get_parameter("charuco_parameters.cornerRefinementWinSize", detector_parameters_->cornerRefinementWinSize);
 	get_parameter("charuco_parameters.cornerRefinementMaxIterations", detector_parameters_->cornerRefinementMaxIterations);
 	get_parameter("charuco_parameters.cornerRefinementMinAccuracy", detector_parameters_->cornerRefinementMinAccuracy);
