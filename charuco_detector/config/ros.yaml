@@ -1,13 +1,13 @@
 charuco_detector:
   ros__parameters:
     charuco_parameters:
-      squaresSidesSizeM: 0.0200
-      markersSidesSizeM: 0.0150
-      numberOfBitsForMarkersSides: 4
-      numberOfMarkers: 70
-      numberOfSquaresInX: 10
-      numberOfSquaresInY: 14
-      dictionaryId: 3
+      squaresSidesSizeM: 0.0300      # CharuCo-400: 30mm方格边长
+      markersSidesSizeM: 0.0225      # CharuCo-400: 22.5mm ArUco标记边长  
+      numberOfBitsForMarkersSides: 5 # DICT_5X5: 每个标记5x5 bits
+      numberOfMarkers: 54            # 实际标记数
+      numberOfSquaresInX: 9          # CharuCo-400: X方向9个格子
+      numberOfSquaresInY: 12         # CharuCo-400: Y方向12个格子
+      dictionaryId: 5                # OpenCV中DICT_5X5_100对应ID=5
     function_parameters:
       use_median_blur: false
       median_blur_k_size: 6
@@ -30,17 +30,15 @@ charuco_detector:
     tf_parameters:
       use_static_tf_broadcaster: true
       tf_broadcaster_republish_rate: 10.0
-      sensor_frame_override: calib_camera
-      charuco_tf_frame: calib_charuco
-
+      sensor_frame_override: camera_color_optical_frame  # 匹配OrbbecSDK坐标系
+      charuco_tf_frame: charuco_board              # CharuCo板坐标系
     subscribers:
       image_topic:
-        topic: /camera/color/image_raw
+        topic: /camera/color/image_raw                   # OrbbecSDK RGB图像话题
         queue_size: 1
       camera_info:
-        topic: /camera/color/camera_info
+        topic: /camera/color/camera_info                 # OrbbecSDK相机内参话题
         queue_size: 1
-
     publishers:
       image_results_publisher:
         topic: ""
